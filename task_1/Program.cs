@@ -9,13 +9,14 @@
 
 int[,] CreateFillArray()
 {
-
-  int[,] arr = new int[10, 20];
+  Console.WriteLine("Введите количество строк и столбцов в массиве (ввод числа через enter)");
+  int[,] arr = new int[Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine())];
   Console.WriteLine();
   for (int i = 0; i < arr.GetLength(0); i++)
   {
     for (int j = 0; j < arr.GetLength(1); j++)
     {
+      // arr[i, j] = Random.Shared.Next(1, 10);
       arr[i, j] = Random.Shared.Next(10);
       Console.Write($"|{arr[i, j],2} | ");
     }
@@ -26,16 +27,14 @@ int[,] CreateFillArray()
 int[] GetSumLine(int[,] array)
 {
   int[] arrSum = new int[array.GetLength(0)];
-  int sum = 0;
   Console.WriteLine();
   for (int i = 0; i < array.GetLength(0); i++)
   {
     for (int j = 0; j < array.GetLength(1); j++)
     {
-      arrSum[i] = sum += array[i, j];
+      arrSum[i] += array[i, j];
     }
     Console.WriteLine($"Сумма {i + 1} строки равна {arrSum[i]}");
-    sum = 0;
   }
   Console.WriteLine();
   return arrSum;
